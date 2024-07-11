@@ -1,0 +1,17 @@
+<app-header></app-header>
+<main>
+    <ul id="users">
+        @for (x of users;track x.id){
+        <li>
+            <app-user [user]="x" [selected]="x.id===selectedUserId"  (select)="onSelectUser($event)"></app-user>
+        </li>
+
+        }
+    </ul>
+    @if(selectedUser){
+        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
+    }
+    @else{
+        <p style="font-weight: bold;">Select User to show tasks</p>
+    }
+</main>
